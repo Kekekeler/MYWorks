@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.shopping.dao.UserMapper">
+
+    <select id="countByUserName" resultType="int" parameterType="String">
+        select count(*)
+        from user
+        where username = #{username}
+    </select>
+
+    <select id="login" parameterType="com.example.shopping.model.User" resultType="int">
+        select count(*)
+        from user
+        where username = #{username} and password = #{password}
+    </select>
+
+    <insert id="register" parameterType="com.example.shopping.model.User">
+        insert into user(id,username,password) values(#{id},#{username},#{password})
+    </insert>
+
+</mapper>
